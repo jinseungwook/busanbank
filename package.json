@@ -1,0 +1,15 @@
+{
+  "name": "finbti-presentation",
+  "version": "1.0.0",
+  "description": "FinBTI Financial Personality Diagnosis Service Presentation",
+  "scripts": {
+    "build": "marp docs/presentation.md -o index.html --html",
+    "build:pdf": "marp docs/presentation.md -o presentation.pdf --pdf"
+  },
+  "keywords": ["finbti", "presentation", "marp"],
+  "author": "jinseungwook",
+  "license": "MIT",
+  "devDependencies": {
+    "@marp-team/marp-cli": "^3.4.0"
+  }
+}
