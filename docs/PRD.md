@@ -1,199 +1,221 @@
-# [Side Project] BNK Local Bridge: 하이브리드 금융 AI 비서
+# [Side Project] FinBTI: 내 지갑 속의 금융 성향 진단 서비스
 
 ## 1. 프로젝트 개요 (Project Overview)
 
-본 프로젝트는 **"금융 소외 계층(외국인, 고령층)을 위한 보안 강화형 AI 뱅킹 서비스"**입니다.
-부산은행의 핵심 가치인 **지역 밀착형 금융**과 **디지털 혁신**을 결합하여, 복잡한 은행 업무를 **자연어(음성/채팅)**로 쉽게 처리할 수 있도록 돕습니다.
+본 프로젝트는 **"MBTI처럼 재미있는 금융 성향 진단"**을 통해 MZ세대의 금융 앱 이탈을 방지하고, 
+게이미피케이션으로 포장된 **초개인화 상품 추천 시스템**입니다.
 
 ### 🎯 기획 배경 (Background)
-- **BNK경남은행 인턴 경험:** 외국인 모드 기획 당시 느낀 "언어 장벽으로 인한 금융 접근성 문제"를 기술로 해결
-- **차별화 포인트:** 개인정보(PII)를 외부 AI 서버로 전송하지 않는 **로컬 우선(Local-First) 아키텍처**
-- **기술적 도전:** Spring Boot(금융 로직)와 Python(AI 로직)의 **이기종 시스템 통합**
+- **Problem:** 기존 은행 앱의 PFM(자산관리)은 "지출을 줄이세요" 같은 잔소리형 → MZ세대 이탈
+- **Insight:** 젊은 세대는 **'나를 규정하고 공유하는 문화'**(MBTI, 혈액형)에 익숙함
+- **Solution:** 금융 데이터를 **8가지 위트 있는 페르소나**로 변환하여 재미와 실용성 동시 제공
+
+### 💡 차별화 포인트
+1. **Fun Banking:** 딱딱한 금융을 게임처럼 경험
+2. **Hyper-Personalization:** 성향 기반 맞춤형 상품 추천
+3. **Data Acquisition:** 정성적 고객 데이터 확보 (향후 마이데이터 연계)
 
 ---
 
 ## 2. 핵심 목표 (Key Objectives)
 
-1. **보안 우선 설계 (Security First)**
-   - 계좌번호, 주민번호 등 민감정보는 **PII Masking Layer**에서 자동 마스킹 후 AI 처리
-   - 금융 거래는 100% Spring Boot에서만 실행 (AI는 의도 파악만 담당)
+1. **사용자 참여 증대**
+   - 평균 체류 시간 3분 이상 달성
+   - SNS 공유율 30% 이상 (바이럴 마케팅)
 
-2. **다국어 지원 (Multilingual Support)**
-   - 베트남어, 영어, 중국어 등 **5개 언어** 실시간 번역
-   - LangChain의 `TranslationChain`을 활용한 자연스러운 번역
+2. **상품 전환율 향상**
+   - 진단 후 상품 클릭률(CTR) 15% 이상
+   - 실제 가입 전환율(CVR) 5% 이상
 
-3. **사용자 경험 최적화 (UX Optimization)**
-   - 음성 인터페이스(STT/TTS) 지원으로 **비대면 텔러** 경험 제공
-   - 복잡한 금융 용어를 쉬운 말로 바꿔주는 **Easy-Talk 모드**
+3. **데이터 자산 구축**
+   - 월 1,000명 이상의 성향 데이터 수집
+   - 향후 AI 추천 모델 학습 데이터로 활용
 
 ---
 
 ## 3. 기술 스택 (Tech Stack)
 
-*금융권 표준(Java)과 AI 혁신(Python)의 하이브리드 구성*
+*부산은행 IT 직무 요구사항에 부합하는 실무 중심 구성*
 
 | 구분 | 기술 (Technology) | 선정 이유 |
 | --- | --- | --- |
-| **Core Banking** | **Java 17, Spring Boot 3.x** | 부산은행 메인 시스템 표준. 트랜잭션 안정성 보장 |
-| **AI Layer** | **Python 3.9+, LangChain** | LLM 연동 및 자연어 처리의 생산성 |
-| **Frontend** | **Streamlit** | 빠른 프로토타이핑 및 음성 UI 구현 |
-| **Database** | **MySQL 8.0 (Docker)** | 로컬 환경 구성 용이, SQLD 역량 활용 |
-| **LLM** | **OpenAI API / Ollama** | 다국어 번역 및 의도 분류 (로컬 LLM 옵션 제공) |
-| **Communication** | **REST API (JSON)** | 이기종 시스템 간 표준 통신 규약 |
-| **Security** | **JWT, Regex/NER** | 인증 토큰 및 PII 탐지/마스킹 |
+| **Backend** | **Java 17, Spring Boot 3.x** | 금융권 표준, 안정적인 트랜잭션 처리 |
+| **Frontend** | **React 18 + TypeScript** | 인터랙티브 UI/UX, 컴포넌트 재사용성 |
+| **Database** | **MySQL 8.0** | SQLD 역량 활용, 정규화된 스키마 설계 |
+| **State Management** | **Redux Toolkit** | 복잡한 진단 상태 관리 |
+| **Styling** | **Tailwind CSS** | 빠른 프로토타이핑, 반응형 디자인 |
+| **Deployment** | **Docker, AWS EC2** | 컨테이너 기반 배포 경험 |
+| **Analytics** | **Google Analytics 4** | 사용자 행동 분석 |
 
 ---
 
 ## 4. 시스템 아키텍처 (System Architecture)
 
-### 4.1 레이어 구조 (Layer Structure)
+### 4.1 전체 구조도
 
 ```
 ┌─────────────────────────────────────┐
-│   User Interface (Streamlit)        │  ← 음성/텍스트 입력
-│   - STT (Speech-to-Text)            │
-│   - TTS (Text-to-Speech)            │
+│   Frontend (React + TypeScript)     │
+│   - 대화형 설문 UI                  │
+│   - 결과 페이지 (8가지 페르소나)    │
+│   - 상품 추천 카드                  │
 └──────────────┬──────────────────────┘
-               │
+               │ REST API
 ┌──────────────▼──────────────────────┐
-│   Security Gateway (Python)         │  ← PII Masking
-│   - Regex: 계좌번호/주민번호 탐지   │
-│   - NER: 개인정보 엔티티 인식       │
-└──────────────┬──────────────────────┘
-               │
-┌──────────────▼──────────────────────┐
-│   AI Engine (LangChain + LLM)       │  ← 의도 파악
-│   - Intent Classification           │
-│   - Translation (5 languages)       │
-│   - Function Calling (JSON)         │
-└──────────────┬──────────────────────┘
-               │ REST API (POST /api/intent)
-┌──────────────▼──────────────────────┐
-│   Core Banking (Spring Boot)        │  ← 금융 거래 실행
-│   - 계좌 조회/이체                  │
-│   - 상품 추천                       │
-│   - 트랜잭션 관리                   │
+│   Backend (Spring Boot)             │
+│   - 설문 로직 처리                  │
+│   - 점수 계산 알고리즘              │
+│   - 페르소나 매칭 엔진              │
+│   - 상품 추천 API                   │
 └──────────────┬──────────────────────┘
                │
 ┌──────────────▼──────────────────────┐
 │   Database (MySQL)                  │
-│   - Customers, Accounts, Products   │
+│   - Question_Meta                   │
+│   - Persona_Type                    │
+│   - User_Result_Log                 │
+│   - Product_Catalog                 │
 └─────────────────────────────────────┘
 ```
 
-### 4.2 데이터 흐름 예시 (Data Flow Example)
+### 4.2 사용자 플로우 (User Flow)
 
-**시나리오:** "내 계좌 잔액 알려줘"
-
-1. **User (음성):** "Tài khoản của tôi còn bao nhiêu tiền?" (베트남어)
-2. **STT:** 음성 → 텍스트 변환
-3. **Security Gateway:** 민감정보 없음 → 통과
-4. **LLM (Translation):** 베트남어 → 한국어 번역 ("내 계좌 잔액이 얼마야?")
-5. **LLM (Intent):** `{ "intent": "CHECK_BALANCE", "account_id": "user_token" }`
-6. **Spring Boot:**
-   - JWT 토큰으로 사용자 인증
-   - DB에서 계좌 잔액 조회: `balance = 1,234,567원`
-7. **LLM (Response):** "현재 잔액은 123만 4천 567원입니다" → 베트남어 번역
-8. **TTS:** 텍스트 → 음성 출력
+1. **진입:** 랜딩 페이지 → "나의 금융 성향 알아보기" 버튼 클릭
+2. **진단:** 12~15개 질문에 대화형으로 응답 (1~4점 척도)
+3. **분석:** 백엔드에서 3가지 축(소비/위험/관계) 점수 계산
+4. **결과:** 8가지 페르소나 중 하나 매칭 + 재미있는 설명
+5. **추천:** 성향에 맞는 금융 상품 3개 제시
+6. **공유:** SNS 공유 버튼 (이미지 자동 생성)
 
 ---
 
-## 5. 주요 기능 명세 (Feature Specifications)
+## 5. 8가지 금융 페르소나 (Persona Types)
 
-### 5.1 다국어 AI 텔러 (Multilingual Teller)
-- **기능:** 5개 언어(한국어, 영어, 중국어, 베트남어, 타갈로그어) 실시간 번역
-- **구현:** LangChain `TranslationChain` + OpenAI GPT-4
-- **Key Point:** 금융 전문 용어 번역 정확도 향상을 위한 Few-Shot Prompting
-
-### 5.2 문맥 유지 대화 (Context-Aware Chat)
-- **기능:** 이전 대화 내용을 기억하여 자연스러운 대화 흐름 유지
-- **구현:** Redis를 활용한 Conversation Memory (세션당 최대 10턴)
-- **Key Point:** 개인정보는 메모리에 저장하지 않고 세션 ID만 관리
-
-### 5.3 음성 인터페이스 (Voice Interface)
-- **기능:** 마이크 입력 → STT → AI 처리 → TTS → 스피커 출력
-- **구현:** Streamlit `audio_recorder` + OpenAI Whisper (STT) + gTTS (TTS)
-- **Key Point:** 고령층을 위한 느린 속도 TTS 옵션 제공
-
-### 5.4 Easy-Talk 모드 (쉬운 말 변환)
-- **기능:** 복잡한 금융 용어를 초등학생도 이해할 수 있는 쉬운 말로 변환
-- **구현:** LLM 프롬프트 엔지니어링 (`Explain like I'm 5 years old`)
-- **예시:** "주택청약종합저축" → "집을 사려고 미리 돈을 모아두는 통장"
-
-### 5.5 상품 추천 (Product Recommendation)
-- **기능:** 사용자의 투자 성향과 목표에 맞는 금융 상품 추천
-- **구현:** RAG (Retrieval-Augmented Generation) + Vector DB (Chroma)
-- **Key Point:** 실제 부산은행 상품 데이터를 임베딩하여 검색
+| 유형 | 별명 | 특징 | 추천 상품 |
+| :--- | :--- | :--- | :--- |
+| **1. 극안전형** | 🐿️ 인간 다람쥐 | 쿠폰/포인트 집착, 절약의 달인 | 고금리 예금, 파킹통장 |
+| **2. 극공격형** | 🦁 불나방 투자자 | "인생은 한 방!" 고위험 선호 | 채권형 펀드, 안전자산 |
+| **3. 충동형** | 💸 걸어 다니는 ATM | 스트레스성 지출, 배달/택배 | 자동이체 적금, 소비 알림 |
+| **4. 관계형** | 🎅 술자리 산타클로스 | "내가 쏠게!" 관계 중시 | 모임통장, 체크카드 |
+| **5. 계획형** | 🤖 인간 엑셀 | 가계부 작성, 체리피커 | ISA, 연금저축 |
+| **6. 방관형** | 🛌 잠자는 숲속의 예금 | "재테크 귀찮아.." | CMA, 자동 재예치 |
+| **7. 유행형** | 👂 유행 따라 힙스터 | "요즘 핫한 거 뭐야?" | 공모주, 테마 펀드 |
+| **8. 가치소비형** | 🕯️ 혼밥의 미식가 | 오직 나를 위한 소비 | 여행 적금, 문화 혜택 |
 
 ---
 
-## 6. 데이터베이스 설계 (ERD Draft)
+## 6. 주요 기능 명세 (Feature Specifications)
 
-### Customers (고객)
-- `customer_id` (PK), `name`, `language_pref` (선호 언어), `risk_propensity` (투자 성향)
+### 6.1 대화형 설문 (Interactive Quiz)
+- **기능:** 챗봇처럼 한 문항씩 등장하는 설문 UI
+- **구현:** React `useState`로 현재 질문 인덱스 관리, 애니메이션 효과
+- **Key Point:** 
+  - 진행률 바(Progress Bar) 표시
+  - 뒤로 가기 버튼으로 이전 답변 수정 가능
 
-### Accounts (계좌)
-- `account_no` (PK), `customer_id` (FK), `balance`, `account_type` (SAVINGS, CHECKING)
-
-### Products (상품)
-- `product_code` (PK), `product_name`, `min_rate`, `max_rate`, `description`, `embedding` (Vector)
-
-### Transactions (거래 내역)
-- `tx_id` (PK), `account_no` (FK), `amount`, `tx_type` (DEPOSIT, WITHDRAW, TRANSFER), `tx_time`
-
-### ConversationHistory (대화 이력)
-- `session_id` (PK), `customer_id` (FK), `messages` (JSON), `created_at`, `expires_at`
-
----
-
-## 7. 보안 설계 (Security Design)
-
-### 7.1 PII Masking Layer
-```python
-def mask_pii(text: str) -> str:
-    # 계좌번호 패턴: 123-4567-89-012
-    text = re.sub(r'\d{3}-\d{4}-\d{2}-\d{3}', '[ACCOUNT_NUM]', text)
-    # 주민등록번호 패턴: 123456-1234567
-    text = re.sub(r'\d{6}-\d{7}', '[SSN]', text)
-    return text
+### 6.2 점수 계산 알고리즘 (Scoring Logic)
+- **기능:** 사용자 응답을 3가지 축으로 분석
+- **구현:** Spring Boot Service 계층에서 Rule-Based 로직
+- **예시 코드:**
+```java
+public String calculatePersona(List<Answer> answers) {
+    int spendingScore = 0;
+    int riskScore = 0;
+    int socialScore = 0;
+    
+    for (Answer ans : answers) {
+        Question q = questionRepository.findById(ans.getQuestionId());
+        spendingScore += ans.getValue() * q.getSpendingWeight();
+        riskScore += ans.getValue() * q.getRiskWeight();
+        socialScore += ans.getValue() * q.getSocialWeight();
+    }
+    
+    // Threshold Mapping
+    if (riskScore > 80 && spendingScore > 60) {
+        return "불나방 투자자";
+    } else if (spendingScore > 80 && socialScore > 70) {
+        return "술자리 산타클로스";
+    }
+    // ... (8가지 조건문)
+}
 ```
 
-### 7.2 인증 흐름 (Authentication Flow)
-1. 사용자 로그인 → Spring Boot에서 JWT 발급
-2. Streamlit에서 JWT를 헤더에 포함하여 API 호출
-3. Spring Boot에서 JWT 검증 후 사용자 정보 추출
+### 6.3 결과 페이지 (Result Page)
+- **기능:** 페르소나 캐릭터 이미지 + 재미있는 설명 + 통계
+- **구현:** 
+  - Canvas API로 결과 이미지 동적 생성 (SNS 공유용)
+  - "전체 사용자 중 상위 15%입니다!" 같은 상대 비교
+- **Key Point:** 공유 욕구를 자극하는 카피라이팅
+
+### 6.4 상품 추천 (Product Recommendation)
+- **기능:** 페르소나별 맞춤형 금융 상품 3개 제시
+- **구현:** 
+  - DB에 `Persona_Product_Mapping` 테이블 설계
+  - 실시간 금리 정보 크롤링 (선택)
+- **Key Point:** "지금 가입하면 우대금리 0.3%p!" 같은 CTA
+
+### 6.5 SNS 공유 (Social Sharing)
+- **기능:** 카카오톡, 인스타그램 스토리 공유
+- **구현:** 
+  - Kakao SDK 연동
+  - Open Graph 메타 태그 설정
+- **Key Point:** 공유 시 추천인 코드 삽입 (바이럴 추적)
 
 ---
 
-## 8. 예상 문제점 및 해결 방안 (Troubleshooting Plan)
+## 7. 데이터베이스 설계 (ERD)
+
+### Question_Meta (질문 메타데이터)
+- `question_id` (PK), `content` (질문 내용), `order` (순서)
+- `spending_weight`, `risk_weight`, `social_weight` (가중치)
+
+### Persona_Type (페르소나 정의)
+- `persona_id` (PK), `name` (별명), `emoji`, `description`
+- `min_spending`, `max_spending`, `min_risk`, `max_risk` (점수 범위)
+
+### User_Result_Log (사용자 결과 이력)
+- `log_id` (PK), `user_id` (FK, 선택), `session_id` (비회원 추적)
+- `spending_score`, `risk_score`, `social_score`
+- `matched_persona_id` (FK), `created_at`
+
+### Product_Catalog (상품 카탈로그)
+- `product_id` (PK), `product_name`, `category`, `interest_rate`
+- `target_persona_ids` (JSON 배열)
+
+### Answer_History (응답 이력)
+- `answer_id` (PK), `log_id` (FK), `question_id` (FK), `value` (1~4)
+
+---
+
+## 8. 예상 문제점 및 해결 방안 (Troubleshooting)
 
 | 예상 문제 | 해결 방안 |
 | :--- | :--- |
-| **할루시네이션** (거짓 정보 생성) | RAG 패턴 적용: DB에서 검증된 데이터만 LLM에 제공 |
-| **번역 정확도** | 금융 용어 사전(Glossary)을 Few-Shot 예제로 제공 |
-| **응답 속도** | Redis 캐싱 + 자주 묻는 질문(FAQ) 사전 생성 |
-| **PII 유출** | 정규식 + NER 이중 검증, 로그에도 마스킹 적용 |
+| **중복 참여 방지** | 쿠키/세션 ID 기반 중복 체크, IP 제한 |
+| **결과 조작** | 답변 패턴 분석, 이상치 탐지 로직 |
+| **서버 부하** | Redis 캐싱, CDN 활용 |
+| **개인정보 이슈** | 비회원도 참여 가능, 선택적 정보 수집 |
 
 ---
 
 ## 9. 향후 일정 (Milestone)
 
-1. **Week 1:** Spring Boot API 설계, MySQL 스키마 생성, Streamlit UI 프로토타입
-2. **Week 2:** 계좌 조회/이체 API 구현, LangChain 기본 연동
-3. **Week 3:** 다국어 번역 및 Intent Classification 구현
-4. **Week 4:** PII Masking Layer 구현, 보안 테스트
-5. **Week 5:** 음성 인터페이스 추가, 시연 영상 제작
+1. **Week 1:** DB 설계, Spring Boot API 구조 설계, React 프로젝트 초기화
+2. **Week 2:** 설문 로직 구현, 점수 계산 알고리즘 개발
+3. **Week 3:** 결과 페이지 UI/UX 구현, 페르소나 매칭 테스트
+4. **Week 4:** 상품 추천 API 연동, SNS 공유 기능
+5. **Week 5:** 배포, 성능 테스트, 시연 영상 제작
 
 ---
 
 ## 10. 기대 효과 (Expected Impact)
 
 ### 기술적 역량 증명
-- **이기종 시스템 통합:** Java와 Python의 협업 아키텍처 설계 능력
-- **보안 설계:** 금융권 필수 요구사항인 PII 보호 구현
-- **AI 활용:** LLM을 실무에 안전하게 적용하는 방법론 제시
+- **Full-Stack 개발:** React + Spring Boot 통합 경험
+- **데이터 설계:** SQLD 역량을 활용한 정규화된 스키마
+- **알고리즘 구현:** ADSP 지식 기반 Rule-Based 분석 로직
 
 ### 비즈니스 가치
-- **부산은행 ESG 경영:** 금융 소외 계층 포용 (외국인, 고령층)
-- **글로벌 전략:** 다국어 지원으로 해외 진출 기반 마련
-- **디지털 혁신:** AI를 활용한 차세대 뱅킹 서비스 선도
+- **Young Image:** 보수적인 지방은행 → 트렌디한 디지털 뱅킹
+- **Viral Marketing:** SNS 공유를 통한 자연스러운 브랜드 홍보
+- **Data-Driven Sales:** 성향 데이터 기반 높은 상품 전환율
