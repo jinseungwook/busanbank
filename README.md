@@ -2,10 +2,6 @@
 
 > **"MBTI처럼 재미있는 금융 성향 진단으로 나에게 딱 맞는 금융 상품을 찾아보세요!"**
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![React](https://img.shields.io/badge/React-18.x-blue)](https://reactjs.org/)
-[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x-green)](https://spring.io/projects/spring-boot)
-
 ---
 
 ## 📌 프로젝트 소개 (About)
@@ -143,7 +139,6 @@ npm start
 
 ---
 
----
 
 ## 📜 라이선스 (License)
 
