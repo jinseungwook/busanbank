@@ -6,7 +6,7 @@ import './App.css';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/busanbank">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/survey" element={<Survey />} />
